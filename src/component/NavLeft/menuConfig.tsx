@@ -1,0 +1,53 @@
+import React from 'react';
+import {
+    HomeOutlined,
+    AccountBookOutlined,
+    ExperimentOutlined,
+    UserOutlined,
+    PayCircleOutlined,
+    UserAddOutlined,
+    UserDeleteOutlined
+} from '@ant-design/icons';
+
+const menuList:any = [
+    {
+        title:"首页",
+        icon:<HomeOutlined />,
+        key:"/home"
+       
+    },
+    {
+        title:'数据监控',
+        icon:<AccountBookOutlined />,
+        key:'/monitor',
+    },
+    {
+        title:'药品管理',
+        icon:<ExperimentOutlined />,
+        key:'/medic'
+    },
+    {
+        title:'员工管理',
+        icon:<UserOutlined />,
+        key:'/user',
+        children:[
+            {
+                title:'添加员工/状态查看',
+                icon:<UserAddOutlined />,
+                key:'/user/userState',
+            },
+            {
+                title:'员工删除',
+                icon:<UserDeleteOutlined />,
+                key:'/user/userDelete',
+            },
+        ]
+    },
+    {
+        title:'订单查询',
+        icon:<PayCircleOutlined />,
+        key:'/order'
+    }
+]
+
+export default menuList
