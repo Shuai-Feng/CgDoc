@@ -20,7 +20,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
     return (
       <div className='header'>
         <div className="header-top">
-          <Avatar src='https://www.yunboys.cn/sjtx/api.php' />
+          <Avatar src='https://www.yunboys.cn/sjtx/api.php' ></Avatar>
           <span className='userbar'>
             欢迎您 {userName}
           </span>

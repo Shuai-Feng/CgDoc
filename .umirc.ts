@@ -29,6 +29,7 @@ export default defineConfig({
         //员工管理的路由
         {     
           path: '/user',
+          //防止单独进入此页面
           routes:[
             { exact: true, path: '/user/userState', component: '@/pages/user/userState' },
             { exact: true, path: '/user/userDelete', component: '@/pages/user/userDelete' },
@@ -43,7 +44,8 @@ export default defineConfig({
         //由于显示子页面的子路由
         { exact: true, path: '/detail', component: '@/pages/detail'},
         
-        { exact: false, path: '/', component: '@/pages/404Page' },
+        { component: '@/pages/404page' },
+      
       ]
     }
   ]

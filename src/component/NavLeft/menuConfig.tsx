@@ -27,17 +27,17 @@ const menuList:any = [
         key:'/medic'
     },
     {
-        title:'员工管理',
+        title:'病人管理',
         icon:<UserOutlined />,
         key:'/user',
         children:[
             {
-                title:'添加员工/状态查看',
+                title:'添加病人/状态查看',
                 icon:<UserAddOutlined />,
                 key:'/user/userState',
             },
             {
-                title:'员工删除',
+                title:'病人离院',
                 icon:<UserDeleteOutlined />,
                 key:'/user/userDelete',
             },

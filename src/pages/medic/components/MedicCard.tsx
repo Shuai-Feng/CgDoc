@@ -2,7 +2,8 @@ import * as React from 'react';
 import EchartReact from 'echarts-for-react';
 //@ts-ignore
 import { EChartOption } from 'echarts' ;
-import {Card} from 'antd';
+import { Card,Badge } from 'antd';
+const Grid = Card.Grid;
 
 import './charttheme/macarons.js'
 
@@ -11,13 +12,15 @@ interface medicData {
   medicName:string,
   medicState:number,
   medicNum:number,
-  medicImg:string
+  medicImg:string,
+  medicStatus:string
 }
 export interface IMedicCardProps {
   width?:number,
   chartOptioin?:any,
   medicData:medicData,
-  chartData:any
+  chartData:any,
+  onClick?:Function
 }
 
 export default class MedicCard extends React.Component<IMedicCardProps> {
@@ -62,10 +65,25 @@ export default class MedicCard extends React.Component<IMedicCardProps> {
     return option;
   }
   public render() {
-    let { medicData } = this.props;
+    let { medicData} = this.props;
     return (
       <Card
-        title={medicData?medicData.medicName:'未知名称'}
+        title={<span>
+          {medicData?
+          <span>
+            {medicData.medicName+'  '}
+            {
+              medicData.medicStatus?
+              <Badge style={{float:'right'}} color="#f50" text={'需要补货'}/>:""
+            }
+          </span>
+          :'未知名称'}
+        </span>}
+        onClick={()=>{
+          if(this.props.onClick){
+            this.props.onClick()
+          }
+        }}
       >
         <div className='medicCard'>
             <div className="overlay"/>
@@ -82,9 +100,9 @@ export default class MedicCard extends React.Component<IMedicCardProps> {
               <p>{medicData?medicData.medicNum:'未知数量'}</p>
             </div>
             <EchartReact className='medic_chart' 
-            style={{height:160,position:"absolute",background:"#fff"}} 
-            option={this.getOption()}
-            theme={'macarons'}
+              style={{height:160,position:"absolute",background:"#fff"}} 
+              option={this.getOption()}
+              theme={'macarons'}
             />
         </div>
       </Card>

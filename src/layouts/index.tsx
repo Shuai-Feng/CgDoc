@@ -21,7 +21,7 @@ const glLayout = (props:IRouteComponentProps) => {
       {props.children}
     </div>
   }
-  if(props.location.pathname === '/login'){
+  if(['/login','/page404'].includes(props.location.pathname) ){
     return <div>
       {props.children}
     </div>
