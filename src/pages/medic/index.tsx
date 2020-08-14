@@ -19,7 +19,6 @@ export default class Medic extends React.Component<MedicProps,MedicState> {
   requestList = ()=>{
     Axios.ajax({url:"/medic/status",data:{}}).then((res:any)=>{
       if(res.result){
-        console.log(res.result)
         let itemList:any[] = res.result;
         let medic_supNum = 0;
         itemList.forEach(item=>{

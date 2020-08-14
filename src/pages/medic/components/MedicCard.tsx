@@ -73,7 +73,7 @@ export default class MedicCard extends React.Component<IMedicCardProps> {
           <span>
             {medicData.medicName+'  '}
             {
-              medicData.medicStatus?
+              !medicData.medicStatus?
               <Badge style={{float:'right'}} color="#f50" text={'需要补货'}/>:""
             }
           </span>

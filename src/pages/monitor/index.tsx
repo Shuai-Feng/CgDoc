@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card,Avatar } from 'antd';
+import { Card,Avatar,Button,Row,Col } from 'antd';
 const Grid = Card.Grid;
 
 interface IMonitorProps {
@@ -8,19 +8,10 @@ interface IMonitorProps {
 
 const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
   return <div>
-      <Card>
-        <Grid>
-           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        </Grid>
-        <Grid>
-           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        </Grid>
-        <Grid>
-           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        </Grid>
-        <Grid>
-           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        </Grid>
+      <Card title='病人监控'>
+         <Row>
+
+         </Row>
       </Card>
   </div>;
 };
