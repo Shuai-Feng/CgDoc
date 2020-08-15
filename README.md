@@ -1,4 +1,4 @@
-# umi project
+# Cg Doc 医疗监控系统 🏥
 
 ## Getting Started
 
@@ -13,3 +13,6 @@ Start the dev server,
 ```bash
 $ yarn start
 ```
+
+## 简介
+    项目用于为各大住院处提供医疗监控

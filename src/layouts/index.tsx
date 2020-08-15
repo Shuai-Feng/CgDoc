@@ -3,7 +3,7 @@ import { IRouteComponentProps} from 'umi'
 import { Layout } from 'antd';
 
 //样式初始化
-import '@/styles/reset.css';
+
 import '@/styles/loading.less'
 import '@/styles/default.less'
 

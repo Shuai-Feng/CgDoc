@@ -1,11 +1,15 @@
 import * as React from 'react';
+import { Form,Input,Card,Button} from 'antd';
 
 interface IDetialProps {
 }
 
 const Detial: React.FunctionComponent<IDetialProps> = (props) => {
+
   return <div>
-      detial
+    <Card>
+        detail
+    </Card>
   </div> ;
 };
 

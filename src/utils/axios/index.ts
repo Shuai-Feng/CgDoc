@@ -35,7 +35,8 @@ export default class Axios {
                 }
             }).catch(error=>{
                 console.log(error)
-                message.info('出了点问题，请刷新')
+                message.info('出了点问题，请刷新'+'error')
+                loading = document.getElementById('ajaxLoading');
                 loading.style.display = 'none';
             })
         })
