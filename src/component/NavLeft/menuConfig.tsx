@@ -32,14 +32,14 @@ const menuList:any = [
         key:'/user',
         children:[
             {
-                title:'添加病人/状态查看',
-                icon:<UserAddOutlined />,
+                title:'病人管理',
+                icon:<UserDeleteOutlined/>,
                 key:'/user/userState',
             },
             {
-                title:'病人离院',
-                icon:<UserDeleteOutlined />,
-                key:'/user/userDelete',
+                title:'病人入院',
+                icon:<UserAddOutlined/>,
+                key:'/user/userAdd',
             },
         ]
     },

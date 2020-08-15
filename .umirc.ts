@@ -32,7 +32,7 @@ export default defineConfig({
           //防止单独进入此页面
           routes:[
             { exact: true, path: '/user/userState', component: '@/pages/user/userState' },
-            { exact: true, path: '/user/userDelete', component: '@/pages/user/userDelete' },
+            { exact: true, path: '/user/userAdd', component: '@/pages/user/userAdd' },
           ]
         },
         //药品管理路由
