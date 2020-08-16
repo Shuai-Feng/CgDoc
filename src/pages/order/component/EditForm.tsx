@@ -11,11 +11,14 @@ interface IEditFormProps {
 
 const EditForm: React.FC<IEditFormProps> = (props) => {
   let { medicData,handleClose } = props;
-
   //用于存放表单数据
-  const [formDate,SetFormDate] = useState(medicData);
-  //
+  //用户存放是否按钮的state
   const [isButton,SetButton] = useState(false);
+  //创建form实例
+  const [form] = Form.useForm();
+  //初始化表单项的所有值
+  form.setFieldsValue(medicData)
+  //表单项结构处理
   const formLayout = {
     labelCol:{span:5},
     wrapperCol:{span:8}
@@ -30,13 +33,15 @@ const EditForm: React.FC<IEditFormProps> = (props) => {
     "user_name":"创建者姓名"
   }
   //用于提交修改数据的函数
+
   let handleUpdate = ()=>{
+    let formValue = form.getFieldsValue();
     Modal.confirm({
-      title:'是否对'+formDate.medic_id+'进行更改',
+      title:'是否对'+formValue.medic_id+'进行更改',
       onOk:()=>{
-          Axios.ajax({url:'/order/delete',data:{
-            param:{
-              formDate
+          Axios.ajax({url:'/order/update',data:{
+            params:{
+              ...formValue
             }
           }}).then(res=>{
             message.success('订单修改成功')
@@ -45,6 +50,8 @@ const EditForm: React.FC<IEditFormProps> = (props) => {
       }
     })
   }
+
+
   //用于渲染整个表单的函数
   let itemRender = (medicData:any) => {
     let result:Array<any> = [];
@@ -73,6 +80,7 @@ const EditForm: React.FC<IEditFormProps> = (props) => {
           key={key}
           label={titleinfo[key]} 
           name={key}
+          initialValue={medicData[key]}
           rules={[{ required: true, message: 'Please input your '+ key +'!' }]}
           >
             <Input type='number'/>
@@ -92,18 +100,18 @@ const EditForm: React.FC<IEditFormProps> = (props) => {
       }
       
     }
-    return <Form 
-    onFinish={(formData)=>{
-      SetFormDate(formData)
-    }}
+
+
+
+
+    return  <Form 
+    form={form}
     onFieldsChange={()=>{
       SetButton(true);
     }}
-    initialValues={{...medicData}}
-    >
+    >    
       {
-        //用于存表单项的数组
-       result
+        result
       }
       <Item wrapperCol={{offset:20,span:4}} >
           <Button type="primary" htmlType="submit"
@@ -112,11 +120,11 @@ const EditForm: React.FC<IEditFormProps> = (props) => {
            onClick={handleUpdate}>确认修改</Button>
       </Item>
     </Form>;
+    
   }
+
   return  <div>
-     {
-        itemRender(medicData)
-     }
+      {itemRender(medicData)}
   </div>;
 };
 

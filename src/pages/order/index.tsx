@@ -117,6 +117,7 @@ export default class Order extends React.Component<{}, IOrderState> {
       selectedRowKeys,
       onChange:this.handleSelect
     }
+    //为表格的列进行一下设置
     const columns = [
       {
         title:"药品id",
@@ -186,6 +187,8 @@ export default class Order extends React.Component<{}, IOrderState> {
             rowSelection={rowSelection}
           />
         </div>
+
+        {/* 这是侧边的抽屉，用于展示详细的订单数据 */}
         <Drawer
           width={600}
           title={this.handleOperaType(this.state.operaType)}
@@ -194,9 +197,11 @@ export default class Order extends React.Component<{}, IOrderState> {
             this.setState({
               isDrawerVisbel:false
             })
+            this.requestList()
           }}
         >
           {
+            //如果我们是订单详情，我们就给他渲染一个Descritions 
             this.state.operaType == 'view' ? 
            <Descriptions layout='vertical' bordered title={rowData.medic_name}>
                   <DescrItem label="编号">{rowData.medic_id}</DescrItem>  
@@ -205,6 +210,7 @@ export default class Order extends React.Component<{}, IOrderState> {
                   <DescrItem label="配属科室">{rowData.medic_dept}</DescrItem>
                   <DescrItem label="订单创建时间">{rowData.create_time}</DescrItem>
                   <DescrItem label="创建人">{rowData.user_name}</DescrItem>
+             {/* 如果不是 那我们就加载咱自己加载的组件 */}
             </Descriptions>:<EditForm  medicData={rowData} handleClose = {()=>{
               this.setState({
                 isDrawerVisbel:false

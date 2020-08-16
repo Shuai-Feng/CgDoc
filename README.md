@@ -33,7 +33,7 @@ CgDoc 由BF4项目组组长在业余时间开发，用到的技术有
 
 - 药品监控   /medic
 
-  ![](C:\Users\学委李帅锋\AppData\Roaming\Typora\typora-user-images\image-20200815173346747.png)
+  ![image-20200815173530805](C:\Users\学委李帅锋\AppData\Roaming\Typora\typora-user-images\image-20200815173346747.png)
 
 - 细节界面  /
 

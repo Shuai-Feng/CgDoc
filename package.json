@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@ant-design/charts": "^0.9.11",
     "@ant-design/pro-layout": "^5.0.12",
     "@types/echarts": "^4.6.4",
     "@umijs/plugin-sass": "^1.1.1",
