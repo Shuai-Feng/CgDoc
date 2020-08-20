@@ -68,6 +68,7 @@ export default class MedicCard extends React.Component<IMedicCardProps> {
     let { medicData} = this.props;
     return (
       <Card
+        style={{minWidth:300}}
         title={<span>
           {medicData?
           <span>

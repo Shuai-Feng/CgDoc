@@ -42,6 +42,10 @@ export default class Medic extends React.Component<MedicProps,MedicState> {
   }
   public render() {
     let { medic_list,medic_supNum } = this.state;
+    const layout = {
+      md:8,
+      sm:24
+    }
     return (
       <div>
           <Card style={{marginBottom:'20px'}}>
@@ -56,7 +60,7 @@ export default class Medic extends React.Component<MedicProps,MedicState> {
             <Row gutter={[26,10]}>
               {
                 medic_list.map((item:any)=>{
-                  return <Col span={8} key={item.medic_id}>
+                  return <Col {...layout} key={item.medic_id}>
                     <MedCard 
                     onClick={()=>{
                       message.info('点击了'+item.medic_name)

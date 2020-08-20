@@ -1,10 +1,18 @@
 import * as React from 'react';
 import { Card,Row,Col } from 'antd';
-import { Line,Liquid } from '@ant-design/charts';
+import { Line,Liquid,Column,TinyLine} from '@ant-design/charts';
+
 interface IHomeProps {
 }
 
 const Home: React.FunctionComponent<IHomeProps> = (props) => {
+  const randomData = (num:number, max:number, min:number) => {
+    const data = [];
+    for (let i = 0; i < num; i++) {
+      data.push({ index: String(i), value: min + Math.random() * (max - min) });
+    }
+    return data;
+  };
   const Option1 = {
     data:[
       { year: '1991', value: 3 },
@@ -19,19 +27,56 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
     ],
     title:{
       visible:true,
-      text:"帅锋使用G2",
+      text:"用户经济水平报告",
     },
     xField: 'year',
     yField: 'value'
   }
+  const Option2 = {
+    data:[
+      { day: '周一', num: 3 },
+      { day: '周二', num: 4 },
+      { day: '周三', num: 4 },
+      { day: '周四', num: 5 },
+      { day: '周五', num: 6 },
+      { day: '周六', num: 6 },
+      { day: '周日', num: 6 },
+    ],
+    title:{
+      visible:true,
+      text:"近一周病房入住数量概况",
+    },
+    xField: 'day',
+    yField: 'num'
+  }
+  const tinyOption = {
+    height:80,
+    padding:10,
+    data: randomData(50, 10, 1000),
+    xField: 'index',
+    yField: 'value',
+    guideLine: [
+      {
+        type: 'mean',
+        text: {
+          position: 'start',
+          content: '平均值',
+          style: {
+            stroke: 'white',
+            lineWidth: 2,
+          },
+        },
+      },
+    ],
+  };
   const waterOption = {
     title: {
       visible: true,
-      text: '水波图',
+      text: '当前空余床位 5639',
     },
     description: {
       visible: true,
-      text: '水波图 - 百分比显示',
+      text: '空余床位 - 百分比显示',
     },
     min: 0,
     max: 10000,
@@ -39,26 +84,25 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
     statistic: { formatter: (value:number) => ((100 * value) / 10000).toFixed(1) + '%' },
   };
   const layout_l = {
-    sm:{
-      span:24
-    }
+    sm:24,
+    md:18
   }
   const layout_r = {
-    sm:{
-      span:12
-    }
+    sm:24,
+    md:6
   }
 
   return <div>
-
+    
     <Row gutter={[10,10]}>
-      <Card style={{marginBottom:10}}>欢迎医生,今天也要加油噢</Card>
+      <Card  style={{marginBottom:10,width:'100%'}}>欢迎{'老大'},今天也要加油噢</Card>
       <Col {...layout_l}>
-        <Line style={{background:"#fff",marginBottom:10}} {...Option1}/>
-        <Line style={{background:"#fff"}} {...Option1}/>
+        <Line style={{background:"#fff",height:300,marginBottom:10}} {...Option1}/>
+        <Column style={{background:"#fff"}} {...Option2}/>
       </Col>
       <Col {...layout_r}>
-        <Liquid style={{background:"#fff"}} {...waterOption}  />
+        <Liquid style={{background:"#fff",marginBottom:10}} {...waterOption}  />
+        <TinyLine style={{background:"#fff",marginBottom:10,overflow:'hidden'}} {...tinyOption} />
       </Col>
     </Row>
     

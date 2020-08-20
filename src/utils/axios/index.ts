@@ -1,8 +1,16 @@
 import axios from 'axios';
 import { Modal,message } from 'antd';
 
+interface ajaxOption {
+    url:string,
+    data:{
+        params?:any
+        isLoading?:boolean
+    }
+}
+
 export default class Axios {
-    static ajax(options:any){
+    static ajax(options:ajaxOption){
         let baseApi:string ='https://www.fastmock.site/mock/5397d463a36505a10505c100b7e2a4fc/CgDoc'
         //对全局的loading进行配置
         //获取loading框的dom对象
@@ -34,8 +42,7 @@ export default class Axios {
                     reject(response.data)
                 }
             }).catch(error=>{
-                console.log(error)
-                message.info('出了点问题，请刷新'+'error')
+                message.info('出了点问题,放心不是你的问题'+error)
                 loading = document.getElementById('ajaxLoading');
                 loading.style.display = 'none';
             })

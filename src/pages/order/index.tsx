@@ -59,7 +59,7 @@ export default class Order extends React.Component<{}, IOrderState> {
   //负责删除数据
   handleOrderDelete = (itemKey:string)=>{
     Axios.ajax({url:'/order/delete',data:{
-      param:{
+      params:{
         itemKey
       }
     }}).then(res=>{
@@ -197,7 +197,6 @@ export default class Order extends React.Component<{}, IOrderState> {
             this.setState({
               isDrawerVisbel:false
             })
-            this.requestList()
           }}
         >
           {

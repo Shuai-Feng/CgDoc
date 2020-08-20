@@ -11,7 +11,7 @@ import {
 
 const menuList:any = [
     {
-        title:"首页",
+        title:"数据报告",
         icon:<HomeOutlined />,
         key:"/home"
        
@@ -32,9 +32,9 @@ const menuList:any = [
         key:'/user',
         children:[
             {
-                title:'病人管理',
+                title:'病人离院',
                 icon:<UserDeleteOutlined/>,
-                key:'/user/userState',
+                key:'/user/userDelete',
             },
             {
                 title:'病人入院',
