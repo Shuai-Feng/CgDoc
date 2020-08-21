@@ -12,7 +12,7 @@ export default defineConfig({
   
   },
   dynamicImport:{
-    loading:'@/component/OWLoading'
+    loading:'@/component/Loading'
   },
   alias:{
     'public':'@/../public/',
@@ -41,6 +41,8 @@ export default defineConfig({
         { exact: true, path: '/monitor', component: '@/pages/monitor' },
         //订单管理
         { exact: true, path: '/order', component: '@/pages/order' },
+        //订单管理
+        { exact: true, path: '/doctor', component: '@/pages/doctor' },
         //由于显示子页面的子路由
         { exact: true, path: '/detail', component: '@/pages/detail'},
         

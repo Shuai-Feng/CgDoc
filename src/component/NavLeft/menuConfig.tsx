@@ -6,7 +6,8 @@ import {
     UserOutlined,
     PayCircleOutlined,
     UserAddOutlined,
-    UserDeleteOutlined
+    UserDeleteOutlined,
+    TrademarkOutlined
 } from '@ant-design/icons';
 
 const menuList:any = [
@@ -47,6 +48,11 @@ const menuList:any = [
         title:'订单查询',
         icon:<PayCircleOutlined />,
         key:'/order'
+    },
+    {
+        title:'医生分配',
+        icon:<TrademarkOutlined />,
+        key:'/doctor'
     }
 ]
 
