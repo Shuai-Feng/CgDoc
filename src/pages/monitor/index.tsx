@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import { Card,Avatar,List,Tooltip,Drawer,Descriptions,Form,Input,Divider,Button,message,Switch,Col,Row} from 'antd';
 import { SettingOutlined,EditOutlined,EllipsisOutlined} from '@ant-design/icons';
+import SetPanle from './component/SetPanle';
 
 import Moment from 'moment';
 import Axios from '@/utils/axios';
@@ -31,8 +32,6 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
   const [dwTitle,setdwTitle] = useState('');//抽屉标题名
 
   const [diaryForm] = Form.useForm();
-  
-  const [settingForm] = Form.useForm();
 
 
   //抽屉标题显示
@@ -63,6 +62,8 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
     'ox_supply':'氧气供应',
     'icu':'病危隔离'
   }
+
+  //界面重定向的
   let resize = ()=>{
     setscWidth(document.documentElement.clientWidth)
   }
@@ -74,13 +75,16 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
       }})
       setPatient(listresult.result)
   }
+  //打开右侧抽屉
   let handleDrawerOpen = (type:string,p_item:any)=>{
     setCuPatient(p_item)
     setdwVisible(true);
     setdwTitle(type)
   }
-  //绑定事件监听
 
+
+
+  //绑定事件监听
   useEffect(()=>{
     window.addEventListener('resize',resize)
     requestList();
@@ -136,42 +140,12 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
             title={dwContext[dwTitle]}
             onClose={()=>{
               setdwVisible(false);
-              settingForm.resetFields();
             }}
            >
               {/* 通过dwTtitle 判断渲染那个 功能组件 */}
 
               
-              {dwTitle == 'setting'?<Form
-                form={settingForm}
-                onFinish={(value)=>{
-                  console.log(value)
-                }}
-              >
-               <Row>
-               {
-                    Object.keys(patient_setting).map((item:string)=>{
-                      return <Col  key={item} sm={24} md={8}>
-                        <FormItem
-                        label={patient_setting[item]}
-                        key={item}
-                        name={item}
-                        valuePropName="checked"
-                      >
-                       
-                        <Switch/>
-                      </FormItem>
-                      </Col>
-                    })
-                }
-               </Row>
-                  <FormItem wrapperCol={{offset:20}}>
-                      <Button type='primary'
-                      htmlType="submit"
-                      > 提交 </Button>
-                  </FormItem>
-              </Form>:''}
-
+              {dwTitle == 'setting'?<SetPanle/>:''}
 
               {/* 病例编辑 */}
               {dwTitle == 'edit'?
