@@ -7,7 +7,7 @@ export default class Util {
     static ee_on(eventName:string,func:any){
        this.ee.on(eventName,func)
     }
-    static ee_emmit(eventName:string,args:any){
+    static ee_emmit(eventName:string,args?:any){
        this.ee.emit(eventName,args)
     }
 

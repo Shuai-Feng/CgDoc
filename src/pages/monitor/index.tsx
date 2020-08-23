@@ -5,6 +5,7 @@ import SetPanle from './component/SetPanle';
 
 import Moment from 'moment';
 import Axios from '@/utils/axios';
+import Utils from '@/utils/util';
 
 const CardMeta = Card.Meta;
 const DesItem = Descriptions.Item;
@@ -33,6 +34,37 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
 
   const [diaryForm] = Form.useForm();
 
+
+  const [panelvalue, setpanelValue] = useState([]);
+
+
+  const panelSetting = [
+    {
+      id: '1',
+      key: 'early_check',
+      name:'早间检查'
+    },
+    {
+      id: '2',
+      key: 'mid_check',
+      name:'午间检查'
+    },
+    {
+      id: '3',
+      key: 'night_check',
+      name:'晚间检查'
+    },
+    {
+      id: '4',
+      key: 'ox_supply',
+      name:'氧气供应'
+    },
+    {
+      id: '5',
+      key: 'icu',
+      name:'病危集中监控'
+    },
+  ]
 
   //抽屉标题显示
   const dwContext = {
@@ -75,10 +107,34 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
       }})
       setPatient(listresult.result)
   }
+
+  let requestPatientSetting = (value:any)=>{
+    Axios.ajax({url:"/patient/settingUpdate",data:{
+      params:{
+        patient_id:current_patient.patient_id,
+        patient_setting:value
+      }
+    }}).then(res=>{
+      message.success('患者设置更新成功')
+    })
+  }
+
+
   //打开右侧抽屉
   let handleDrawerOpen = (type:string,p_item:any)=>{
+    //确认当前的病人名
     setCuPatient(p_item)
+    panelSetting.forEach(item=>{
+      if(p_item.patient_setting.includes(item.key)){
+        // @ts-ignore
+        panelvalue.push(item.id)
+      }
+    })
+    setpanelValue(panelvalue.slice())
+    //打开抽屉
     setdwVisible(true);
+
+    //初始化抽屉标题
     setdwTitle(type)
   }
 
@@ -88,6 +144,14 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
   useEffect(()=>{
     window.addEventListener('resize',resize)
     requestList();
+    // component did mount 
+    console.log('component did mount ')
+
+    //监听事件 当<setting Panel触发提交时的事件>
+    Utils.ee_on('settingRequest',(value:any)=>{
+      requestPatientSetting(value)
+      setdwVisible(false)
+    });
   },[])
 
   
@@ -139,13 +203,29 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
             width={scWidth>700?600:'85vw'}
             title={dwContext[dwTitle]}
             onClose={()=>{
+              //关闭抽屉
               setdwVisible(false);
+              //同时清空panelValue
+              setpanelValue([])
             }}
            >
               {/* 通过dwTtitle 判断渲染那个 功能组件 */}
 
               
-              {dwTitle == 'setting'?<SetPanle/>:''}
+              {dwTitle == 'setting'?
+              <div>
+                <p>患者ID: {current_patient.patient_id}</p>
+                <p>患者姓名: {current_patient.patient_name}</p>
+                <p>患者所属床位: {current_patient.bed_num}号床</p>
+                <Divider/>
+                <SetPanle
+                  value={panelvalue}
+                  panelSetting={panelSetting}
+                  onSetChange={(value:any)=>{setpanelValue(value)}}
+                />
+              </div>
+             
+              :''}
 
               {/* 病例编辑 */}
               {dwTitle == 'edit'?
@@ -187,7 +267,6 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
               :''}
 
 
-
               {/*用户信息查看 */}
               {dwTitle == 'ellipsis'?
                 <Descriptions
@@ -198,7 +277,9 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
                   Object.keys(current_patient).map((item:any)=>{
                     return <DesItem label={paContext[item]} key={item}>
                       {item === 'patient_setting'?
-                      patient_setting[current_patient[item]]
+                       current_patient.patient_setting.map((item)=>{
+                       return <p>{patient_setting[item]}</p>
+                       })
                       :current_patient[item]}
                       {}
                     </DesItem>
@@ -206,6 +287,7 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
                 }
               </Descriptions>:''}
            </Drawer>
+        
   </div>;
 };
 
