@@ -42,7 +42,8 @@ export default class Axios {
                     reject(response.data)
                 }
             }).catch(error=>{
-                message.info('出了点问题,放心不是你的问题'+error)
+                message.info('出了点问题,放心不是你的问题')
+                message.info(error)
                 loading = document.getElementById('ajaxLoading');
                 loading.style.display = 'none';
             })

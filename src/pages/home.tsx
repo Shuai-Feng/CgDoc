@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { Card,Row,Col } from 'antd';
-import { Line,Liquid,Column,TinyLine} from '@ant-design/charts';
+// import { Liquid,Column,TinyLine} from '@ant-design/charts';
+//如果你这姐引入的话，所有的图表都会被引入进来
+
+import Line from '@ant-design/charts/es/line';
+import Liquid from '@ant-design/charts/es/liquid';
+import Column from '@ant-design/charts/es/column';
+import TinyLine from '@ant-design/charts/es/tinyLine';
 
 interface IHomeProps {
 }

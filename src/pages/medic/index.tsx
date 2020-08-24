@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MedCard from './components/MedicCard';
+import MedCard from './components/Dy_medicCard';
 import Axios from '@/utils/axios';
 import { Card,Button,Row,Col,message } from 'antd';
 
@@ -62,9 +62,8 @@ export default class Medic extends React.Component<MedicProps,MedicState> {
                 medic_list.map((item:any)=>{
                   return <Col {...layout} key={item.medic_id}>
                     <MedCard 
-                    onClick={()=>{
-                      message.info('点击了'+item.medic_name)
-                    }}
+                    // @ts-ignore
+                    onClick={()=>message.info('点击了' + item.medic_name)}
                     medicData={{
                       medicName:item.medic_name,
                       medicNum:item.medic_num,
