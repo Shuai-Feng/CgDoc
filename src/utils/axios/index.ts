@@ -35,15 +35,14 @@ export default class Axios {
                     }else{
                         Modal.info({
                             title:'提示',
-                            content:res.msg
+                            content:"出现了问题 放心 不是你的问题 "+res.msg
                         })
                     }
                 }else{
                     reject(response.data)
                 }
             }).catch(error=>{
-                message.info('出了点问题,放心不是你的问题')
-                message.info(error)
+                message.info('出了点问题,放心不是你的问题'+error.message)
                 loading = document.getElementById('ajaxLoading');
                 loading.style.display = 'none';
             })

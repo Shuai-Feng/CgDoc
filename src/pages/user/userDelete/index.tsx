@@ -140,7 +140,7 @@ export default class UserState extends React.Component<IUserStateProps, IUserSta
         }
       }
     ]
-    
+
     return (
       
       <div>
@@ -152,6 +152,7 @@ export default class UserState extends React.Component<IUserStateProps, IUserSta
                 label={'患者姓名'}
                 name={'patient_name'}
                 key={'patient_name'}
+              
               >
                 <Input/>
               </FormItem>
@@ -159,6 +160,7 @@ export default class UserState extends React.Component<IUserStateProps, IUserSta
                 label={'起始时间'}
                 name={'start_time'}
                 key={'start_timde'}
+               
               >
                 <DatePicker/>
               </FormItem>
@@ -166,11 +168,14 @@ export default class UserState extends React.Component<IUserStateProps, IUserSta
                 label={'~'}
                 name={'end_time'}
                 key={'end_time'}
+          
               >
                 <DatePicker/>
               </FormItem>
-              <Button style={{marginRight:10}} type='primary' onClick={this.requestFilterList}>查询</Button>
-              <Button type='primary' onClick={this.resetFields}>清空</Button>
+              <FormItem>
+                  <Button style={{marginRight:10}} type='primary' onClick={this.requestFilterList}>查询</Button>
+                  <Button type='primary' onClick={this.resetFields}>清空</Button>
+              </FormItem>
           </Form>
         </Card>
 
@@ -178,6 +183,7 @@ export default class UserState extends React.Component<IUserStateProps, IUserSta
           <Table
             columns={columns}
             dataSource={dataSource}
+            scroll={document.documentElement.clientWidth<800?{x:'100%'}:{}}
           />
         </div>
         <Modal

@@ -31,7 +31,7 @@ const glLayout = (props:IRouteComponentProps) => {
           {/* 这里放menu组件 */}
           <NavLeft className="navLeft"/>
           </Sider>
-          <Layout className="main">
+          <Layout className="main" style={document.documentElement.clientWidth<500?{minWidth:'100vw'}:{}}>
             <Content>
               <NavHeader/>
               <div style={{ margin: '24px 16px 0'}}>

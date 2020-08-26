@@ -185,6 +185,7 @@ export default class Order extends React.Component<{}, IOrderState> {
             columns={columns}
             dataSource={this.state.dataSource}  
             rowSelection={rowSelection}
+            scroll={document.documentElement.clientWidth<800?{x:'100%'}:{}}
           />
         </div>
 
