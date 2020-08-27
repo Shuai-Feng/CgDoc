@@ -144,9 +144,6 @@ const Monitor: React.FunctionComponent<IMonitorProps> = (props) => {
   useEffect(()=>{
     window.addEventListener('resize',resize)
     requestList();
-    // component did mount 
-    console.log('component did mount ')
-
     //监听事件 当<setting Panel触发提交时的事件>
     Utils.ee_on('settingRequest',(value:any)=>{
       requestPatientSetting(value)

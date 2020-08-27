@@ -26,7 +26,8 @@ const glLayout = (props:IRouteComponentProps) => {
       {props.children}
     </div>
   }
-  return <Layout>
+  //通过这个可以让移动端兼容性更好
+  return <Layout style={{width:'100vw',overflow:'hidden'}}>
          <Sider breakpoint="lg" collapsedWidth={0} width={260}>
           {/* 这里放menu组件 */}
           <NavLeft className="navLeft"/>

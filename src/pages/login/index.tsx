@@ -9,6 +9,7 @@ interface ILoginProps {
 }
 
 const Login: React.FunctionComponent<ILoginProps> = (props) => {
+    console.log(props)
     const formLayout = {
         labelCol:{span:24},
         wrapperCol:{span:24}
