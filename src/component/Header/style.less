@@ -1,39 +1,40 @@
 @import '~@/utils/mix.less';
 
-.header{
-    width:100%;
-    background-color: #fff;
-    .header-top{
-        text-align: right;
-        padding: 0px 32px;
-        .dbc_line(60px);
-        //对用户名称微调
-        .userbar{
-            margin: 0px 10px;
-        }
+.header {
+  width: 100%;
+  background-color: #fff;
+  .header-top {
+    text-align: right;
+    padding: 0px 32px;
+    .dbc_line(60px);
+    //对用户名称微调
+    .userbar {
+      margin: 0px 10px;
     }
-    .header-bottom{
-        border-top: 1px solid #09f;
-        padding: 0px 50px;
-        height: 40px;
-        line-height: 40px;
-        .breadcrumb-title {
-            text-align: center;
-            font-size: 16px;
-            &::after{
-                position: absolute;
-                content: '';
-                border-top:10px solid #ffff;
-                border-right:12px solid transparent;
-                border-left:12px solid transparent;
-                top: 39px;
-                left: 87px;
-                @media(max-width: 500px){
-                    top: 98%;
-                    left: 27%;
-                }
-            }
+  }
+  .header-bottom {
+    border-top: 1px solid #09f;
+    padding: 0px 50px;
+    height: 40px;
+    line-height: 40px;
+    .breadcrumb-title {
+      text-align: center;
+      font-size: 16px;
+      text-overflow: ellipsis;
+      //超出
+      &::after {
+        position: absolute;
+        content: '';
+        border-top: 10px solid #ffff;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+        top: 39px;
+        left: 87px;
+        @media (max-width: 500px) {
+          top: 98%;
+          left: 27%;
         }
+      }
     }
+  }
 }
-

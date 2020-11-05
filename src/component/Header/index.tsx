@@ -57,10 +57,10 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
         </div>
         <div className="header-bottom">
           <Row>
-            <Col span={4} className="breadcrumb-title">
+            <Col span={6} className="breadcrumb-title">
               {this.props.menuName || ''}
             </Col>
-            <Col span={20}></Col>
+            <Col span={18}></Col>
           </Row>
         </div>
       </div>
