@@ -54,7 +54,9 @@ export default defineConfig({
         { exact: true, path: '/doctor', component: '@/pages/doctor' },
         //由于显示子页面的子路由
         { exact: true, path: '/detail', component: '@/pages/detail' },
-
+        //ICU 病人监控
+        { exact: true, path: '/ICU', component: '@/pages/ICU' },
+        //404page
         { component: '@/pages/404page' },
       ],
     },

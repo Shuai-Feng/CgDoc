@@ -5,7 +5,6 @@ export default class Util {
   private static ee = new EventEmitter();
   static ee_on(eventName: string, func: any) {
     this.ee.on(eventName, func);
-    debugger;
   }
   static ee_emmit(eventName: string, args?: any) {
     this.ee.emit(eventName, args);

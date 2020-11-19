@@ -13,6 +13,7 @@ import NavHeader from '@/component/Header';
 const { Content, Footer, Sider } = Layout;
 
 const glLayout = (props: IRouteComponentProps) => {
+  //详情页面的使用
   if (props.location.pathname === '/detail') {
     return (
       <div>
@@ -21,6 +22,7 @@ const glLayout = (props: IRouteComponentProps) => {
       </div>
     );
   }
+
   if (['/login', '/page404'].includes(props.location.pathname)) {
     return <div>{props.children}</div>;
   }

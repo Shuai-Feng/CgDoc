@@ -18,10 +18,21 @@ $ yarn start
 
 ## 简介
 ```
-CgDoc 由BF4项目组组长在业余时间开发，用到的技术有
-		umi3：由云谦大佬开发的脚手架
-		TypeScript：让js增加接口 泛型 更好的面向对象
+CgDoc 是基于umi3+ts 开发的医院住院部管理系统
+    该项目使用
 ```
+
+## 新版特性
+
+```
+✨✨✨ICU模块的构建
+    此次开发增加对ICU病人的监控功能，功能如下
+        ICU病人体征折线图图 （心率 血压）
+        ICU病人出现异常情况 会直接联系护士工作台
+        患者家属可以实时查看ICU患者信息
+```
+
+
 
 ## 目录机构
 
@@ -29,13 +40,17 @@ CgDoc 由BF4项目组组长在业余时间开发，用到的技术有
 
 - 订单列表   /order 
 
-  ![image-20200815173530805](C:\Users\学委李帅锋\AppData\Roaming\Typora\typora-user-images\image-20200815173530805.png)
+  
 
 - 药品监控   /medic
 
-  ![image-20200815173530805](C:\Users\学委李帅锋\AppData\Roaming\Typora\typora-user-images\image-20200815173346747.png)
+  
 
-- 细节界面  /
+- 细节界面  /monitor
+
+  
+  
+- ICU监控  /ICU
 
   
 
