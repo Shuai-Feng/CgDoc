@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.less';
-import { Form, Button, Input } from 'antd';
+import { Form, Button, Input, Row, Col } from 'antd';
 // @ts-ignore
 import Particles from 'particlesjs';
 const FormItem = Form.Item;
@@ -32,6 +32,20 @@ const Login: React.FunctionComponent<ILoginProps> = props => {
           </FormItem>
           <FormItem label="密码" {...formLayout}>
             <Input type="password" />
+          </FormItem>
+          <FormItem label="验证码" {...formLayout}>
+            <Row gutter={[10, 10]}>
+              <Col span={14}>
+                <Input type="input" />
+              </Col>
+              <Col span={10} style={{ overflow: 'hidden' }}>
+                <img
+                  style={{ width: '100%', height: 30 }}
+                  src="http://shuaifeng.xyz/CgDoc/api/yzm.php"
+                  alt=""
+                />
+              </Col>
+            </Row>
           </FormItem>
           <FormItem>
             <Button type="primary">登陆</Button>

@@ -1,49 +1,50 @@
-.medicCard{
+.medicCard {
   position: relative;
   display: inline-block;
+  min-width: 100%;
   height: 420px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0px 12px 10px #585858;
 
   font-family: '微软雅黑';
-  & *{
+  & * {
     transition: 0.4s all;
   }
-  p{
+  p {
     margin: 0px;
   }
 
-  .overlay{
+  .overlay {
     position: absolute;
     z-index: 0;
-    top:0;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: #001529;
     opacity: 0.6;
   }
-  .medicImg{
+  .medicImg {
     width: 100%;
     height: 100%;
   }
-  .medic_chart{
+  .medic_chart {
     position: absolute;
     width: 100%;
     bottom: -160px;
     transition: 0.4s;
   }
-  .medic_name{
+  .medic_name {
     position: absolute;
     top: 4%;
     right: 0;
     font-size: 32px;
-    color:#09f;
+    color: #09f;
     background-color: #fff;
     padding: 0px 12px;
     border-radius: 20px 0px 0px 20px;
-    span{
+    span {
       font-size: 24px;
       margin-left: 20px;
     }
@@ -55,31 +56,33 @@
   //   width: 50px;
   //   background: #fff;
   // }
-  .medic_state,.medic_number{
+  .medic_state,
+  .medic_number {
     position: absolute;
-    bottom:0;
+    bottom: 0;
     font-size: 24px;
-    color:#fff;
+    color: #fff;
     padding: 10px;
     transition: 0.4s;
-   
-    &.medic_number{
+
+    &.medic_number {
       right: 0;
-      p:nth-child(2){
+      p:nth-child(2) {
         text-align: right;
       }
     }
   }
 
-  &:hover{
-    .medic_state,.medic_number{
+  &:hover {
+    .medic_state,
+    .medic_number {
       bottom: 38%;
       font-size: 16px;
     }
-    .medic_chart{
+    .medic_chart {
       bottom: 0px;
     }
-    .overlay{
+    .overlay {
       opacity: 0.8;
     }
   }

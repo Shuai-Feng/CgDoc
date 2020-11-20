@@ -10,9 +10,9 @@ export default defineConfig({
   },
   sass: {},
   //安卓app不用按需加载
-  // dynamicImport: {
-  //   loading: '@/component/Loading',
-  // },
+  dynamicImport: {
+    loading: '@/component/Loading',
+  },
   alias: {
     public: '@/../public/',
   },
