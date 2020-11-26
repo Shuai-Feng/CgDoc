@@ -23,16 +23,22 @@ const Login: React.FunctionComponent<ILoginProps> = props => {
   }, []);
   return (
     <div className="LoginPage">
+      {/* 这部分是指背景的粒子特效 单独作为一个图层了 */}
       <canvas className="bg_line"></canvas>
+
+      {/* 这个是登陆表单的模型以及逻辑 */}
       <div className="wrapper">
         <h1 className="login_title">Cg Doc 后台登陆</h1>
+
         <Form className="loginForm">
           <FormItem label="用户名" {...formLayout}>
             <Input placeholder={'请输入用户名'} />
           </FormItem>
+
           <FormItem label="密码" {...formLayout}>
             <Input type="password" />
           </FormItem>
+
           <FormItem label="验证码" {...formLayout}>
             <Row gutter={[10, 10]}>
               <Col span={14}>
@@ -47,6 +53,7 @@ const Login: React.FunctionComponent<ILoginProps> = props => {
               </Col>
             </Row>
           </FormItem>
+
           <FormItem>
             <Button type="primary">登陆</Button>
           </FormItem>

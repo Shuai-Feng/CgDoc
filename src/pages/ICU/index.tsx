@@ -1,20 +1,34 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
+import { Row, Col } from 'antd';
+import './style.less';
+
 interface IICUpageProps {}
 
 const ICUpage: React.FunctionComponent<IICUpageProps> = props => {
-  let d_str: string = 'a_b';
-  // a_b  aB
-  useEffect(() => {
-    d_str.replace(/_[a-z]/g, (word: string) => {
-      word = word.substr(1).toUpperCase();
-      return word;
-    });
-    axios.get('/api/connect.php').then(res => {
-      console.log(res);
-    });
-  }, []);
-  return <div className="ICU_page">ICU_page</div>;
+  const colLayout = {
+    md: 7,
+    xs: 24,
+  };
+  const colLayout_lg = {
+    md: 10,
+    xs: 24,
+  };
+  return (
+    <div className="ICU_page">
+      {/* 这是Icupage 的渲染界面 此界面采用三列布局 */}
+      <Row>
+        <Col {...colLayout}>
+          <div className="box">123</div>
+        </Col>
+        <Col {...colLayout}>
+          <div className="box">123</div>
+        </Col>
+        <Col {...colLayout_lg}>
+          <div className="box">123</div>
+        </Col>
+      </Row>
+    </div>
+  );
 };
 
 export default ICUpage;

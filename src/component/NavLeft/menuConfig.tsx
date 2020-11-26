@@ -13,14 +13,14 @@ import {
 
 const menuList: any = [
   {
-    title: 'ICU重症监控',
-    icon: <AlertOutlined />,
-    key: '/ICU',
-  },
-  {
     title: '数据报告',
     icon: <HomeOutlined />,
     key: '/home',
+  },
+  {
+    title: 'ICU重症监控',
+    icon: <AlertOutlined />,
+    key: '/ICU',
   },
   {
     title: '数据监控',
