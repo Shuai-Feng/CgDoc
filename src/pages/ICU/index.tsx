@@ -1,20 +1,31 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import { useRequest } from 'ahooks';
 interface IICUpageProps {}
 
 const ICUpage: React.FunctionComponent<IICUpageProps> = props => {
-  let d_str: string = 'a_b';
-  // a_b  aB
-  useEffect(() => {
-    d_str.replace(/_[a-z]/g, (word: string) => {
-      word = word.substr(1).toUpperCase();
-      return word;
+  function getUsername(): Promise<string> {
+    return new Promise(resolve => {
+      axios.get('https://randomuser.me/api').then(res => {
+        resolve(res.data.results[0].phone);
+      });
     });
-    axios.get('/api/connect.php').then(res => {
-      console.log(res);
+  }
+  useEffect(() => {
+    axios.get('https://randomuser.me/api').then(res => {
+      console.log(res.data.results[0].phone);
     });
   }, []);
-  return <div className="ICU_page">ICU_page</div>;
+  const { data, loading, run, cancel } = useRequest(getUsername, {
+    pollingInterval: 3000,
+    pollingWhenHidden: false,
+  });
+
+  return (
+    <div className="ICU_page">
+      <p>Username: {loading ? 'loading' : data}</p>
+    </div>
+  );
 };
 
 export default ICUpage;

@@ -27,6 +27,7 @@
     "@umijs/plugin-sass": "^1.1.1",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.2.14",
+    "ahooks": "^2.9.3",
     "axios": "^0.19.2",
     "echarts": "^4.8.0",
     "echarts-for-react": "^2.0.16",

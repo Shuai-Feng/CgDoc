@@ -16,6 +16,15 @@ export default defineConfig({
   alias: {
     public: '@/../public/',
   },
+  //外部打包
+  externals: {
+    react: 'window.React',
+    'react-dom': 'window.ReactDOM',
+  },
+  scripts: [
+    'https://gw.alipayobjects.com/os/lib/react/16.13.1/umd/react.production.min.js',
+    'https://gw.alipayobjects.com/os/lib/react-dom/16.13.1/umd/react-dom.production.min.js',
+  ],
   routes: [
     {
       exact: false,
