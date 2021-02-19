@@ -23,7 +23,7 @@ const ICUpage: React.FunctionComponent<IICUpageProps> = props => {
 
   return (
     <div className="ICU_page">
-      <p>Username: {loading ? 'loading' : data}</p>
+      <p>Username: {loading ? 'loading' : data}</p>asdfasd
     </div>
   );
 };
