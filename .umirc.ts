@@ -65,6 +65,8 @@ export default defineConfig({
         { exact: true, path: '/detail', component: '@/pages/detail' },
         //ICU 病人监控
         { exact: true, path: '/ICU', component: '@/pages/ICU' },
+
+        { exact: true, path: '/demo1', component: '@/pages/demo1' },
         //404page
         { component: '@/pages/404page' },
       ],
