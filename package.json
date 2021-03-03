@@ -25,6 +25,7 @@
     "@ant-design/pro-layout": "^5.0.12",
     "@types/classnames": "^2.2.11",
     "@types/echarts": "^4.6.4",
+    "@umijs/hooks": "^1.9.3",
     "@umijs/plugin-sass": "^1.1.1",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.2.14",
