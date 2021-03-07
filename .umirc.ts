@@ -72,4 +72,12 @@ export default defineConfig({
       ],
     },
   ],
+
+  proxy: {
+    '/api': {
+      target: 'http://www.bjlink32.com/data8.php',
+      changeOrigin: true,
+      pathRewrite: { '^/api': '' },
+    },
+  },
 });
