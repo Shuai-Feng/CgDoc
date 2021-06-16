@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRequest } from 'ahooks';
 // 给组件引进来
 import menuConfig from './menuConfig';
-
+import TotalTree from './components/TotalTree';
 import { Chart, Interval, Annotation } from 'bizcharts';
 
 interface IICUpageProps {}
@@ -50,20 +50,7 @@ const ICUpage: React.FunctionComponent<IICUpageProps> = props => {
 
   return (
     <div className="ICU_page">
-      {myDate}
-      <Chart height={400} padding="auto" data={data} autoFit>
-        <Interval
-          adjust={[
-            {
-              type: 'dodge',
-              marginRatio: 0,
-            },
-          ]}
-          color="name"
-          position="月份*月均降雨量"
-        />
-        <Annotation.Line start={['min', 'median']} end={['max', 'median']} />
-      </Chart>
+      <TotalTree />
     </div>
   );
 };
