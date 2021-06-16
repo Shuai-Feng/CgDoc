@@ -135,7 +135,7 @@ const Home: React.FunctionComponent<IHomeProps> = props => {
                   0;
                 let width =
                   mycan.style.width.substr(0, mycan.style.width.length - 2) - 0;
-                debugger;
+
                 const doc = new jsPDF({
                   orientation: width > height ? 'landscape' : 'portrait',
                   unit: 'px',

@@ -36,17 +36,115 @@ const ICUpage: React.FunctionComponent<IICUpageProps> = props => {
     { name: 'Berlin', 月份: 'Aug.', 月均降雨量: 42.4 },
   ];
 
+  let treeArray = [
+    {
+      id: 1,
+      nodeName: 'a',
+      children: [
+        {
+          id: 11,
+          nodeName: 'ab',
+          children: [
+            {
+              id: 111,
+              nodeName: 'abc',
+            },
+            {
+              id: 112,
+              nodeName: 'abd',
+            },
+          ],
+        },
+        {
+          id: 12,
+          nodeName: 'ac',
+          children: [
+            {
+              id: 121,
+              nodeName: 'aca',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 2,
+      nodeName: 'b',
+    },
+    {
+      id: 3,
+      nodeName: 'c',
+      children: [
+        {
+          id: 31,
+          nodeName: 'cb',
+          children: [
+            {
+              id: 311,
+              nodeName: 'cbc',
+            },
+            {
+              id: 312,
+              nodeName: 'cbd',
+            },
+          ],
+        },
+        {
+          id: 32,
+          nodeName: 'cc',
+          children: [
+            {
+              id: 321,
+              nodeName: 'cca',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 4,
+      nodeName: 'd',
+    },
+  ];
+
+  const dfsPath = (tree: any[], key: string) => {
+    let nodePathArray = [];
+
+    // (tree为目标树，targetId为目标节点id)
+    function getNodeRoute(tree, targetId) {
+      for (let index = 0; index < tree.length; index++) {
+        if (tree[index].children) {
+          let endRecursiveLoop = getNodeRoute(tree[index].children, targetId);
+          if (endRecursiveLoop) {
+            nodePathArray.push(tree[index].id);
+            return true;
+          }
+        }
+        if (tree[index].id === targetId) {
+          nodePathArray.push(tree[index].id);
+          return true;
+        }
+      }
+    }
+    getNodeRoute(tree, key);
+
+    return nodePathArray;
+  };
+
   useEffect(() => {
     axios.get('https://randomuser.me/api').then(res => {
       console.log(res.data.results[0].phone);
     });
   }, []);
+
   const { data: myDate, loading, run, cancel } = useRequest(getUsername, {
     pollingInterval: 1000,
     pollingWhenHidden: false,
   });
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(dfsPath(treeArray, 321));
+  }, []);
 
   return (
     <div className="ICU_page">

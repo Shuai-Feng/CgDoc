@@ -13,6 +13,7 @@ import '@/styles/default.less';
 
 import NavLeft from '@/component/NavLeft';
 import NavHeader from '@/component/Header';
+import MobHeader from '@/component/MobHeader';
 
 const { Content, Footer, Sider } = Layout;
 
