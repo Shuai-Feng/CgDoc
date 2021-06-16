@@ -9,6 +9,5 @@ export default class Util {
   static ee_emmit(eventName: string, args?: any) {
     this.ee.emit(eventName, args);
   }
-
   static saveLiu(interval: number, fun: Function) {}
 }

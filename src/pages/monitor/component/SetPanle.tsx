@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col, Switch, Button, Modal } from 'antd';
 import Utils from '@/utils/util';
 interface ISetPanelProps {
@@ -11,7 +11,7 @@ const SetPanel: React.FunctionComponent<ISetPanelProps> = props => {
   const { panelSetting, value, onSetChange } = props;
   const [isBtn, setBtn] = useState(true);
 
-  //switch更爱
+  //switch更改
   let everChange = (seting_id: string) => {
     setBtn(false);
     if (value.includes(seting_id)) {

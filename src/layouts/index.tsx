@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { IRouteComponentProps } from 'umi';
-import { Layout } from 'antd';
+import { Layout, ConfigProvider } from 'antd';
+
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+import locale from 'antd/lib/locale/zh_CN';
 
 //样式初始化
 import '@/styles/reset.css';
@@ -43,7 +47,9 @@ const glLayout = (props: IRouteComponentProps) => {
       >
         <Content>
           <NavHeader />
-          <div style={{ margin: '24px 16px 0' }}>{props.children}</div>
+          <div style={{ margin: '24px 16px 0' }}>
+            <ConfigProvider locale={locale}>{props.children}</ConfigProvider>
+          </div>
           <Footer style={{ textAlign: 'center' }}>
             CgDoc医疗管理系统 &copy; Crerated by Shuaifeng
           </Footer>

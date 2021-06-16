@@ -16,6 +16,15 @@ export default defineConfig({
   alias: {
     public: '@/../public/',
   },
+  //外部打包
+  externals: {
+    react: 'window.React',
+    'react-dom': 'window.ReactDOM',
+  },
+  scripts: [
+    'https://gw.alipayobjects.com/os/lib/react/16.13.1/umd/react.production.min.js',
+    'https://gw.alipayobjects.com/os/lib/react-dom/16.13.1/umd/react-dom.production.min.js',
+  ],
   routes: [
     {
       exact: false,
@@ -56,9 +65,19 @@ export default defineConfig({
         { exact: true, path: '/detail', component: '@/pages/detail' },
         //ICU 病人监控
         { exact: true, path: '/ICU', component: '@/pages/ICU' },
+
+        { exact: true, path: '/demo1', component: '@/pages/demo1' },
         //404page
         { component: '@/pages/404page' },
       ],
     },
   ],
+
+  proxy: {
+    '/api': {
+      target: 'http://www.bjlink32.com/data8.php',
+      changeOrigin: true,
+      pathRewrite: { '^/api': '' },
+    },
+  },
 });
