@@ -21,6 +21,13 @@ const menuList: any = [
     title: 'ICU重症监控',
     icon: <AlertOutlined />,
     key: '/ICU',
+    children: [
+      {
+        title: 'ICU表单',
+        icon: <UserDeleteOutlined />,
+        key: '/ICU/form/sdfsdj-dfsdf-sddfsd',
+      },
+    ],
   },
   {
     title: '数据监控',

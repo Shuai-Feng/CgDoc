@@ -27,7 +27,6 @@ export default defineConfig({
   ],
   routes: [
     {
-      exact: false,
       path: '/',
       component: '@/layouts/index.tsx',
       routes: [
@@ -41,6 +40,11 @@ export default defineConfig({
           path: '/user',
           //防止单独进入此页面
           routes: [
+            {
+              exact: true,
+              path: '/user',
+              component: '@/pages/user/userTable',
+            },
             {
               exact: true,
               path: '/user/userDelete',
@@ -64,7 +68,24 @@ export default defineConfig({
         //由于显示子页面的子路由
         { exact: true, path: '/detail', component: '@/pages/detail' },
         //ICU 病人监控
-        { exact: true, path: '/ICU', component: '@/pages/ICU' },
+        {
+          path: '/ICU',
+          // component: '@/pages/ICU',
+          routes: [
+            {
+              path: '/ICU',
+              component: '@/pages/ICU',
+            },
+            {
+              path: '/ICU/form',
+              component: '@/pages/ICU/myForm',
+            },
+            {
+              path: '/ICU/form/:id',
+              component: '@/pages/ICU/myForm',
+            },
+          ],
+        },
 
         { exact: true, path: '/demo1', component: '@/pages/demo1' },
         //404page
