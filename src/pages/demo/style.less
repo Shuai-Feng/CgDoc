@@ -1,0 +1,80 @@
+.demoPage {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #777;
+
+  .content {
+    display: flex;
+    gap: 12px;
+    .card {
+      position: relative;
+      transition: 0.3s;
+      background: rgb(27, 26, 26);
+      color: #fff;
+      width: 320px;
+      height: 400px;
+      &:hover {
+        transform: translateY(-20px);
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, #ffbc00, #ff0058);
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        filter: blur(30px);
+        background: linear-gradient(45deg, #ffbc00, #ff0058);
+      }
+
+      &:nth-child(2)::before,
+      &:nth-child(2)::after {
+        background: linear-gradient(315deg, #03a9f4, #ff0058);
+      }
+      &:nth-child(3)::before,
+      &:nth-child(3)::after {
+        background: linear-gradient(315deg, #4dff03, #00d0ff);
+      }
+    }
+    .card span {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 2;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+    .card .innerContent {
+      height: 100%;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+    }
+  }
+}

@@ -19,6 +19,9 @@ const { Content, Footer, Sider } = Layout;
 
 const glLayout = (props: IRouteComponentProps) => {
   //详情页面的使用
+
+  const noLayoutRoute = ['/login', '/page404', '/Demo'];
+
   if (props.location.pathname === '/detail') {
     return (
       <div>
@@ -28,7 +31,7 @@ const glLayout = (props: IRouteComponentProps) => {
     );
   }
 
-  if (['/login', '/page404'].includes(props.location.pathname)) {
+  if (noLayoutRoute.includes(props.location.pathname)) {
     return <div>{props.children}</div>;
   }
   //通过这个可以让移动端兼容性更好

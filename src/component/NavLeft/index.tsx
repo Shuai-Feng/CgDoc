@@ -15,18 +15,22 @@ interface INavLeftProps {
   className?: string;
 }
 
-const NavLeft: React.FunctionComponent<INavLeftProps & RouterProps> = props => {
+const NavLeft: React.FunctionComponent<INavLeftProps & RouterProps> = (
+  props,
+) => {
   let renderMenu = (data: Array<any>) => {
-    return data.map(item => {
+    return data.map((item) => {
       if (item.children) {
         return (
           <SubMenu
             title={
               <span>
-                <NavLink to={item.key}>
+                {/* <NavLink to={item.key}>
                   {item.icon}
                   {item.title}
-                </NavLink>
+                </NavLink> */}
+                <span style={{ marginRight: 10 }}>{item.icon}</span>
+                <span>{item.title}</span>
               </span>
             }
             key={item.key}
@@ -38,8 +42,8 @@ const NavLeft: React.FunctionComponent<INavLeftProps & RouterProps> = props => {
       return (
         <MenuItem title={item.title} key={item.key}>
           <NavLink to={item.key}>
-            {item.icon || ''}
-            {item.title}
+            <span style={{ marginRight: 10 }}> {item.icon || ''}</span>
+            <span> {item.title}</span>
           </NavLink>
         </MenuItem>
       );

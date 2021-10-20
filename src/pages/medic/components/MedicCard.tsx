@@ -5,7 +5,7 @@ import { EChartOption } from 'echarts';
 import 'echarts/lib/chart/line';
 import { Card, Badge } from 'antd';
 
-import './charttheme/macarons.js';
+// import '../charttheme/macarons.js';
 
 import './style.less';
 interface medicData {
@@ -121,7 +121,7 @@ export default class MedicCard extends React.Component<IMedicCardProps> {
             className="medic_chart"
             style={{ height: 160, position: 'absolute', background: '#fff' }}
             option={this.getOption()}
-            theme={'macarons'}
+            // theme={'macarons'}
           />
         </div>
       </Card>

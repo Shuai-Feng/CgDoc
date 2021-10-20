@@ -4,29 +4,23 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  mfsu: {},
   publicPath: './',
   history: {
     type: 'hash',
   },
-  sass: {},
-  //安卓app不用按需加载
-  dynamicImport: {
-    loading: '@/component/Loading',
-  },
+  // sass: {
+
+  // },
+  // dynamicImport:{
+  //   loading:'@/component/OWLoading'
+  // },
   alias: {
     public: '@/../public/',
   },
-  //外部打包
-  externals: {
-    react: 'window.React',
-    'react-dom': 'window.ReactDOM',
-  },
-  scripts: [
-    'https://gw.alipayobjects.com/os/lib/react/16.13.1/umd/react.production.min.js',
-    'https://gw.alipayobjects.com/os/lib/react-dom/16.13.1/umd/react-dom.production.min.js',
-  ],
   routes: [
     {
+      exact: false,
       path: '/',
       component: '@/layouts/index.tsx',
       routes: [
@@ -40,11 +34,6 @@ export default defineConfig({
           path: '/user',
           //防止单独进入此页面
           routes: [
-            {
-              exact: true,
-              path: '/user',
-              component: '@/pages/user/userTable',
-            },
             {
               exact: true,
               path: '/user/userDelete',
@@ -63,42 +52,14 @@ export default defineConfig({
         { exact: true, path: '/monitor', component: '@/pages/monitor' },
         //订单管理
         { exact: true, path: '/order', component: '@/pages/order' },
-        // 订单管理
+        //订单管理
         { exact: true, path: '/doctor', component: '@/pages/doctor' },
         //由于显示子页面的子路由
         { exact: true, path: '/detail', component: '@/pages/detail' },
-        //ICU 病人监控
-        {
-          path: '/ICU',
-          // component: '@/pages/ICU',
-          routes: [
-            {
-              path: '/ICU',
-              component: '@/pages/ICU',
-            },
-            {
-              path: '/ICU/form',
-              component: '@/pages/ICU/myForm',
-            },
-            {
-              path: '/ICU/form/:id',
-              component: '@/pages/ICU/myForm',
-            },
-          ],
-        },
-
-        { exact: true, path: '/demo1', component: '@/pages/demo1' },
-        //404page
+        //订单管理
+        { exact: true, path: '/demo', component: '@/pages/demo' },
         { component: '@/pages/404page' },
       ],
     },
   ],
-
-  proxy: {
-    '/api': {
-      target: 'http://www.bjlink32.com/data8.php',
-      changeOrigin: true,
-      pathRewrite: { '^/api': '' },
-    },
-  },
 });
